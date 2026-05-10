@@ -78,7 +78,7 @@ export const VPNDashboard = () => {
   });
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: ReturnType<typeof setInterval>;
     if (status === "connected") {
       interval = setInterval(() => {
         setConnectionTime((prev) => prev + 1);
