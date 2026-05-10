@@ -28,9 +28,39 @@ interface SystemMetrics {
 const servers: Server[] = [
   { id: "local", country: "Local Pi", city: "Raspberry Pi", flag: "🏠", load: 15 },
   { id: "fr-paris", country: "France", city: "Paris", flag: "🇫🇷", load: 23 },
+  { id: "fr-marseille", country: "France", city: "Marseille", flag: "🇫🇷", load: 18 },
   { id: "uk-london", country: "Royaume-Uni", city: "Londres", flag: "🇬🇧", load: 45 },
   { id: "de-berlin", country: "Allemagne", city: "Berlin", flag: "🇩🇪", load: 34 },
+  { id: "de-frankfurt", country: "Allemagne", city: "Francfort", flag: "🇩🇪", load: 42 },
+  { id: "es-madrid", country: "Espagne", city: "Madrid", flag: "🇪🇸", load: 28 },
+  { id: "it-milan", country: "Italie", city: "Milan", flag: "🇮🇹", load: 31 },
+  { id: "nl-amsterdam", country: "Pays-Bas", city: "Amsterdam", flag: "🇳🇱", load: 38 },
+  { id: "be-brussels", country: "Belgique", city: "Bruxelles", flag: "🇧🇪", load: 22 },
+  { id: "ch-zurich", country: "Suisse", city: "Zurich", flag: "🇨🇭", load: 19 },
+  { id: "se-stockholm", country: "Suède", city: "Stockholm", flag: "🇸🇪", load: 27 },
+  { id: "no-oslo", country: "Norvège", city: "Oslo", flag: "🇳🇴", load: 24 },
+  { id: "pl-warsaw", country: "Pologne", city: "Varsovie", flag: "🇵🇱", load: 33 },
+  { id: "pt-lisbon", country: "Portugal", city: "Lisbonne", flag: "🇵🇹", load: 26 },
+  { id: "ie-dublin", country: "Irlande", city: "Dublin", flag: "🇮🇪", load: 29 },
   { id: "us-ny", country: "États-Unis", city: "New York", flag: "🇺🇸", load: 67 },
+  { id: "us-la", country: "États-Unis", city: "Los Angeles", flag: "🇺🇸", load: 58 },
+  { id: "us-chicago", country: "États-Unis", city: "Chicago", flag: "🇺🇸", load: 52 },
+  { id: "ca-toronto", country: "Canada", city: "Toronto", flag: "🇨🇦", load: 41 },
+  { id: "ca-montreal", country: "Canada", city: "Montréal", flag: "🇨🇦", load: 36 },
+  { id: "mx-mexico", country: "Mexique", city: "Mexico", flag: "🇲🇽", load: 44 },
+  { id: "br-saopaulo", country: "Brésil", city: "São Paulo", flag: "🇧🇷", load: 49 },
+  { id: "ar-buenos", country: "Argentine", city: "Buenos Aires", flag: "🇦🇷", load: 39 },
+  { id: "jp-tokyo", country: "Japon", city: "Tokyo", flag: "🇯🇵", load: 55 },
+  { id: "kr-seoul", country: "Corée du Sud", city: "Séoul", flag: "🇰🇷", load: 47 },
+  { id: "sg-singapore", country: "Singapour", city: "Singapour", flag: "🇸🇬", load: 51 },
+  { id: "hk-hongkong", country: "Hong Kong", city: "Hong Kong", flag: "🇭🇰", load: 53 },
+  { id: "in-mumbai", country: "Inde", city: "Mumbai", flag: "🇮🇳", load: 62 },
+  { id: "ae-dubai", country: "Émirats", city: "Dubaï", flag: "🇦🇪", load: 35 },
+  { id: "il-telaviv", country: "Israël", city: "Tel Aviv", flag: "🇮🇱", load: 32 },
+  { id: "tr-istanbul", country: "Turquie", city: "Istanbul", flag: "🇹🇷", load: 46 },
+  { id: "za-johannesburg", country: "Afrique du Sud", city: "Johannesburg", flag: "🇿🇦", load: 43 },
+  { id: "au-sydney", country: "Australie", city: "Sydney", flag: "🇦🇺", load: 48 },
+  { id: "nz-auckland", country: "Nouvelle-Zélande", city: "Auckland", flag: "🇳🇿", load: 37 },
 ];
 
 export const VPNDashboard = () => {
@@ -48,7 +78,7 @@ export const VPNDashboard = () => {
   });
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: ReturnType<typeof setInterval>;
     if (status === "connected") {
       interval = setInterval(() => {
         setConnectionTime((prev) => prev + 1);
